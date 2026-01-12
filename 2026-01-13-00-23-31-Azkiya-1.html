@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AzkiyaFood - Toko Bahan Makanan Segar & Siap Saji</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #28a745, #ff8c00);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        nav h1 {
+            color: white;
+            font-size: 1.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffed4e;
+        }
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 0;
+        }
+        /* Hero Section */
+        #home {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.8), rgba(255, 140, 0, 0.8)), url('https://via.placeholder.com/1920x1080/28a745/ff8c00?text=Ganti+Dengan+Foto+Background+Hero') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        #home .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+        }
+        #home .hero-content {
+            flex: 1;
+            padding-left: 50px;
+        }
+        #home .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        #home .hero-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        #home h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        #home p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        #home .btn {
+            background: #ff8c00;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        #home .btn:hover {
+            background: #e67e22;
+        }
+        /* About Section */
+        #about {
+            background: white;
+            text-align: center;
+        }
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #28a745;
+        }
+        #about p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Products Section */
+        #products {
+            background: #f4f4f4;
+            text-align: center;
+        }
+        #products h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #28a745;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            padding: 20px;
+            font-size: 1.2rem;
+        }
+        .product-card .cart-icon {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            background: #ff8c00;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .product-card .cart-icon:hover {
+            background: #e67e22;
+        }
+        /* Advantages Section */
+        #advantages {
+            background: white;
+            text-align: center;
+        }
+        #advantages h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #28a745;
+        }
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .advantage-item {
+            padding: 30px;
+            background: #f4f4f4;
+            border-radius: 10px;
+        }
+        .advantage-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ff8c00;
+        }
+        /* Contact Section */
+        #contact {
+            background: #f4f4f4;
+            text-align: center;
+        }
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #28a745;
+        }
+        #contact p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .whatsapp-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .maps-button {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #contact .btn {
+            background: #25d366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        #contact .btn:hover {
+            background: #128c7e;
+        }
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #28a745, #ff8c00);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer p {
+            margin-bottom: 10px;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            #home .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            #home .hero-content {
+                padding-left: 0;
+                margin-bottom: 30px;
+            }
+            nav ul {
+                display: none; /* Simple hide for mobile, can add hamburger later */
+            }
+            .whatsapp-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>AzkiyaFood</h1>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#products">Katalog Produk</a></li>
+                <li><a href="#advantages">Keunggulan</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <div class="hero-image">
+                <img src="logoAzkiya.jpeg" alt="Logo AzkiyaFood">
+            </div>
+            <div class="hero-content">
+                <h2>Selamat Datang di AzkiyaFood</h2>
+                <p>Penjualan Bahan Makanan Segar dan Makanan Siap Saji Berkualitas Tinggi untuk Kebutuhan Anda</p>
+                <a href="#contact" class="btn">Pesan Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>Tentang Kami</h2>
+            <p>AzkiyaFood adalah toko bahan makanan terpercaya yang menyediakan produk segar dan higienis. Kami berkomitmen untuk memberikan kualitas terbaik pada setiap produk, mulai dari ikan segar hingga makanan siap saji yang siap memasak. Dengan pengalaman bertahun-tahun, kami memastikan kepuasan pelanggan melalui layanan prima dan harga yang kompetitif.</p>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2>Katalog Produk</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://thegorbalsla.com/wp-content/uploads/2019/08/Pakan-Terbaik-untuk-Ikan-Tongkol.jpg" alt="Ikan Tongkol">
+                    <h3>Ikan Tongkol</h3>
+                    <a href="https://wa.me/6281259480812?text=Saya%20ingin%20pesan%20Ikan%20Tongkol" class="cart-icon" target="_blank">🛒</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://media.istockphoto.com/id/621696628/id/foto/ikan-tuna-segar-di-pelabuhan-nelayan.jpg?s=170667a&w=0&k=20&c=ixBfpWNcTNFujJiI3nZtgatguf1gMv4Czhjbmi1wG7k=" alt="Ikan Tuna">
+                    <h3>Ikan Tuna</h3>
+                    <a href="https://wa.me/6281259480812?text=Saya%20ingin%20pesan%20Ikan%20Tuna" class="cart-icon" target="_blank">🛒</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://cdn.rri.co.id/berita/Meulaboh/o/1754459936022-WhatsApp_Image_2025-08-06_at_12.51.37/dwctk6mpyermixa.jpeg" alt="Ikan Nila">
+                    <h3>Ikan Nila</h3>
+                    <a href="https://wa.me/6281259480812?text=Saya%20ingin%20pesan%20Ikan%20Nila" class="cart-icon" target="_blank">🛒</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2022/2/2/ebd6b256-39b1-4b8e-8881-15fe4e5e2dc6.jpg" alt="Ikan Lele">
+                    <h3>Ikan Lele</h3>
+                    <a href="https://wa.me/6281259480812?text=Saya%20ingin%20pesan%20Ikan%20Lele" class="cart-icon" target="_blank">🛒</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-some-different-kinds-of-fish-and-seafood-image_2887551.jpg" alt="Berbagai Jenis Ikan Laut">
+                    <h3>Berbagai Jenis Ikan Laut</h3>
+                    <a href="https://wa.me/6281259480812?text=Saya%20ingin%20pesan%20Berbagai%20Jenis%20Ikan%20Laut" class="cart-icon" target="_blank">🛒</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://media.istockphoto.com/id/1095314538/id/foto/berbagai-jenis-daging-ayam.jpg?s=612x612&w=0&k=20&c=MdSpsJHomqAjo9oNekxYFnSLJUqFisRyFAWBybip1m0=" alt="Daging Ayam">
+                    <h3>Daging Ayam Potong / Ayam Kedua</h3>
+                    <a href="https://wa.me/6281259480812?text=Saya%20ingin%20pesan%20Daging%20Ayam" class="cart-icon" target="_blank">🛒</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://allofresh.id/blog/wp-content/uploads/2023/09/nugget-ayam-3.jpg" alt="Makanan Siap Saji">
+                    <h3>Makanan Siap Saji (Nugget, Pentol, dll)</h3>
+                    <a href="https://wa.me/6281259480812?text=Saya%20ingin%20pesan%20Makanan%20Siap%20Saji" class="cart-icon" target="_blank">🛒</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages">
+        <div class="container">
+            <h2>Keunggulan Toko Kami</h2>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <h3>Fresh & Higienis</h3>
+                    <p>Produk kami selalu segar dan diproses dengan standar higienis tertinggi.</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>Harga Bersaing</h3>
+                    <p>Kami menawarkan harga yang kompetitif tanpa mengurangi kualitas.</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>Siap Antar</h3>
+                    <p>Layanan pengantaran cepat dan aman ke lokasi Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Kontak & Lokasi</h2>
+            <p>📞 Nomor Pemesanan (WhatsApp / Telepon):</p>
+            <p>085236099200 (Gian)</p>
+            <p>081259480812 (Bpk. Tugi)</p>
+            <p>082247336750 (Ibu. Kenti)</p>
+            <p>📍 Alamat Lengkap: Rt/05 Rw/02 Krajan, Desa Sendang, Kecamatan Ngrayun, Kabupaten Ponorogo</p>
+            <div class="whatsapp-buttons">
+                <a href="https://wa.me/6285236099200?text=Halo%20AzkiyaFood%2C%20saya%20ingin%20bertanya%20tentang%20produk%20Anda" class="btn" target="_blank">Hubungi via WhatsApp (Gian)</a>
+                <a href="https://wa.me/6281259480812?text=Halo%20AzkiyaFood%2C%20saya%20ingin%20bertanya%20tentang%20produk%20Anda" class="btn" target="_blank">Hubungi via WhatsApp (Bpk. Tugi)</a>
+                <a href="https://wa.me/6282247336750?text=Halo%20AzkiyaFood%2C%20saya%20ingin%20bertanya%20tentang%20produk%20Anda" class="btn" target="_blank">Hubungi via WhatsApp (Ibu. Kenti)</a>
+            </div>
+            <div class="maps-button">
+                <a href="https://maps.app.goo.gl/oEtTrkgbFAZ66ndNA" class="btn" target="_blank">Lihat di Google Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 AzkiyaFood. Semua Hak Dilindungi.</p>
+            <p>Alamat: Rt/05 Rw/02 Krajan, Desa Sendang, Kecamatan Ngrayun, Kabupaten Ponorogo | Kontak: 085236099200 (Gian), 081259480812 (Bpk. Tugi), 082247336750 (Ibu. Kenti)</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
